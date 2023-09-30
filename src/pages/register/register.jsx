@@ -78,7 +78,7 @@ const Register = () => {
   return (
     <RegisterFormStyled>
       <div className="container-header">
-        <img src={imagem} alt="" />
+        <h2>Tickets</h2>
         <button
           onClick={() => {
             navigate("/");
