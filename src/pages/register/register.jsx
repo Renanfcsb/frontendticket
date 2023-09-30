@@ -93,7 +93,7 @@ const Register = () => {
         <span>Rapido e grátis, vamos nessa</span>
         <Input
           id="username"
-          label="Nome"
+          label="Nome de usuário"
           type="text"
           error={errors.username?.message}
           placeholder="Digite seu nome de usuario aqui"
@@ -101,7 +101,7 @@ const Register = () => {
         />
         <Input
           id="first_name"
-          label="Sobrenome"
+          label="Nome"
           type="text"
           error={errors.name?.message}
           placeholder="Digite seu nome"
