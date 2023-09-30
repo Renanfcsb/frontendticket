@@ -12,6 +12,7 @@ import { RegisterFormStyled } from "./registerST";
 const schema = yup
   .object({
     name: yup.string().required("O nome é obrigatório"),
+    username: yup.string().required("O nick name é obrigatório"),
     email: yup.string().email().required("Email é obrigatótio"),
     password: yup
       .string()
@@ -25,7 +26,7 @@ const schema = yup
       .string()
       .oneOf([yup.ref("password")], "Senhas devem ser iguais")
       .required("Campo Obrigatório"),
-    bio: yup.string().required("A bio é obrigatória"),
+    birth_date: yup.date().required("A data de nascimento é obrigatória"),
     contact: yup
       .string()
       .typeError("Deve ser um numero")
@@ -91,12 +92,28 @@ const Register = () => {
         <h2>Crie sua Conta</h2>
         <span>Rapido e grátis, vamos nessa</span>
         <Input
-          id="name"
+          id="username"
           label="Nome"
           type="text"
+          error={errors.username?.message}
+          placeholder="Digite seu nome de usuario aqui"
+          {...register("username")}
+        />
+        <Input
+          id="first_name"
+          label="Sobrenome"
+          type="text"
           error={errors.name?.message}
-          placeholder="Digite seu nome aqui"
-          {...register("name")}
+          placeholder="Digite seu nome"
+          {...register("first_name")}
+        />
+        <Input
+          id="last_name"
+          label="Sobrenome"
+          type="text"
+          error={errors.name?.message}
+          placeholder="Digite seu sobrenome"
+          {...register("last_name")}
         />
         <Input
           id="email"
@@ -123,36 +140,14 @@ const Register = () => {
           {...register("confPassword")}
         />
         <Input
-          id="bio"
-          label="Bio"
+          id="birth_date"
+          label="Data de nascimento"
           type="text"
           error={errors.bio?.message}
-          placeholder="Fale sobre você"
-          {...register("bio")}
+          placeholder="aaaa-mm-dd"
+          {...register("birthdate")}
         />
-        <Input
-          id="contact"
-          label="Contato"
-          type="text"
-          error={errors.contact?.message}
-          placeholder="Opção de contato"
-          {...register("contact")}
-        />
-        <label htmlFor="course_module">Selecionar módulo</label>
-        <select {...register("course_module")} id="course_module">
-          <option value="Primeiro módulo (Introdução ao Frontend)">
-            Primeiro Módulo
-          </option>
-          <option value="Segundo módulo (Frontend Avançado)">
-            Segundo Módulo
-          </option>
-          <option value="Terceiro módulo (Introdução ao Backend)">
-            Terceiro Módulo
-          </option>
-          <option value="Quarto módulo (Backend Avançado)">
-            Quarto Módulo
-          </option>
-        </select>
+
         <button type="submit">Cadastrar</button>
       </form>
     </RegisterFormStyled>
